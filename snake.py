@@ -8,6 +8,7 @@ class Snake:
         self.body = [Vector2(6,9), Vector2(5,9), Vector2(4,9)]
         self.direction = Vector2(1,0)
         self.change_direction = "RIGHT"
+        self.eat = False
 
     def draw(self, screen, settings):
         """Draws the snake on the screen."""
@@ -17,7 +18,11 @@ class Snake:
 
     def update(self):
         """Updates the snake position."""
-        self.body = self.body[:-1]
-        self.body.insert(0,self.body[0] + self.direction)
+        if self.eat:
+            self.body.insert(0,self.body[0] + self.direction)
+            self.eat = False
+        else:
+            self.body = self.body[:-1]
+            self.body.insert(0,self.body[0] + self.direction)
 
 

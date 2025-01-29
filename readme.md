@@ -22,9 +22,9 @@ Project is created with:
 - [X] Creating a blank canvas and Game Loop 
 - [X] Creating the Food
 - [X] Creating the Snake
-- [ ] Moving the Snake
+- [X] Moving the Snake
 - [ ] Making the Snake eat the Food
-- [ ] Making the Snake grow longer
+- [X] Making the Snake grow longer
 - [ ] Checking for collision with edges and tail
 - [ ] Adding title and frame
 - [ ] Keeping score 

@@ -1,5 +1,5 @@
 import pygame, sys
-from pygame import Vector2, KEYDOWN
+from pygame import Vector2
 from settings import Settings
 from food import Food
 from snake import Snake
@@ -63,6 +63,10 @@ class Game:
             for cell in range(1, self.settings.number_of_cells):
                 pygame.draw.line(self.screen, pygame.Color('black'), Vector2(self.settings.cell_size * cell, 0),
                                  Vector2(self.settings.cell_size * cell, self.settings.cell_size * self.settings.number_of_cells), 2)
+
+            # checking collision snake with apple
+            if self.snake.body[0] == self.apple.position:
+                self.snake.eat = True
 
             # Display the last modified screen
             pygame.display.flip()
