@@ -1,5 +1,5 @@
 import pygame, sys
-from pygame import Vector2
+from pygame import Vector2, KEYDOWN
 from settings import Settings
 from food import Food
 from snake import Snake
@@ -17,6 +17,10 @@ class Game:
                                                self.settings.cell_size * self.settings.number_of_cells))
         pygame.display.set_caption("Retro Snake")
 
+        # custom user event
+        self.SNAKE_MOVE = pygame.USEREVENT
+        pygame.time.set_timer(self.SNAKE_MOVE, 200)
+
     def run_game(self):
         """Start main game loop."""
         while True:
@@ -25,6 +29,21 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == self.SNAKE_MOVE:
+                    self.snake.update()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT and self.snake.change_direction != "RIGHT":
+                        self.snake.change_direction = "LEFT"
+                        self.snake.direction = Vector2(-1, 0)
+                    if event.key == pygame.K_RIGHT and self.snake.change_direction != "LEFT":
+                        self.snake.change_direction = "RIGHT"
+                        self.snake.direction = Vector2(1, 0)
+                    if event.key == pygame.K_UP and self.snake.change_direction != "DOWN":
+                        self.snake.change_direction = "UP"
+                        self.snake.direction = Vector2(0, -1)
+                    if event.key == pygame.K_DOWN and self.snake.change_direction != "UP":
+                        self.snake.change_direction = "DOWN"
+                        self.snake.direction = Vector2(0, 1)
 
             # changing surface color
             self.screen.fill(self.settings.background_color)
