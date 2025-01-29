@@ -20,7 +20,7 @@ Project is created with:
 
 ## To do list
 - [X] Creating a blank canvas and Game Loop 
-- [ ] Creating the Food
+- [X] Creating the Food
 - [ ] Creating the Snake
 - [ ] Moving the Snake
 - [ ] Making the Snake eat the Food
