@@ -19,7 +19,7 @@ Project is created with:
 * Pygame library version: 2.6.1
 
 ## To do list
-- [ ] Creating a blank canvas and Game Loop 
+- [X] Creating a blank canvas and Game Loop 
 - [ ] Creating the Food
 - [ ] Creating the Snake
 - [ ] Moving the Snake
