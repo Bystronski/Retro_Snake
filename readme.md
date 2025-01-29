@@ -21,7 +21,7 @@ Project is created with:
 ## To do list
 - [X] Creating a blank canvas and Game Loop 
 - [X] Creating the Food
-- [ ] Creating the Snake
+- [X] Creating the Snake
 - [ ] Moving the Snake
 - [ ] Making the Snake eat the Food
 - [ ] Making the Snake grow longer

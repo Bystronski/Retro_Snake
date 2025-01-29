@@ -2,6 +2,8 @@ import pygame, sys
 from pygame import Vector2
 from settings import Settings
 from food import Food
+from snake import Snake
+
 
 class Game:
     """A general class for managing resources and methods
@@ -10,6 +12,7 @@ class Game:
         pygame.init()
         self.settings = Settings()
         self.apple = Food()
+        self.snake = Snake()
         self.screen = pygame.display.set_mode((self.settings.cell_size * self.settings.number_of_cells,
                                                self.settings.cell_size * self.settings.number_of_cells))
         pygame.display.set_caption("Retro Snake")
@@ -26,6 +29,12 @@ class Game:
             # changing surface color
             self.screen.fill(self.settings.background_color)
 
+            # draw apple food
+            self.apple.draw(self.settings, self.screen)
+
+            # draw snake
+            self.snake.draw(self.screen, self.settings)
+
             # draw horizontal lines
             for cell in range(1, self.settings.number_of_cells):
                 pygame.draw.line(self.screen, pygame.Color('black'),Vector2(0, self.settings.cell_size * cell),
@@ -35,8 +44,6 @@ class Game:
             for cell in range(1, self.settings.number_of_cells):
                 pygame.draw.line(self.screen, pygame.Color('black'), Vector2(self.settings.cell_size * cell, 0),
                                  Vector2(self.settings.cell_size * cell, self.settings.cell_size * self.settings.number_of_cells), 2)
-            # draw apple food
-            self.apple.draw(self.settings, self.screen)
 
             # Display the last modified screen
             pygame.display.flip()
