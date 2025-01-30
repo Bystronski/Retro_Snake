@@ -74,6 +74,17 @@ class Game:
                     if self.apple.position not in self.snake.body:
                         self.apple.new_position = False
 
+            # snake body collision with screen edges
+            if (self.snake.body[0][0] == self.settings.number_of_cells or
+                self.snake.body[0][1] == self.settings.number_of_cells or
+                self.snake.body[0][0] == 0 or self.snake.body[0][1] == 0):
+                self.snake.new_game()
+
+            # snake body collision with tail
+            for segment in self.snake.body[1:]:
+                if segment == self.snake.body[0]:
+                    self.snake.new_game()
+
             # Display the last modified screen
             pygame.display.flip()
 

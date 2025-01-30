@@ -25,4 +25,10 @@ class Snake:
             self.body = self.body[:-1]
             self.body.insert(0,self.body[0] + self.direction)
 
+    def new_game(self):
+        """New game starting snake position."""
+        self.body = [Vector2(6,9), Vector2(5,9), Vector2(4,9)]
+        self.direction = Vector2(1, 0)
+        self.change_direction = "RIGHT"
+
 

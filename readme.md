@@ -25,7 +25,7 @@ Project is created with:
 - [X] Moving the Snake
 - [X] Making the Snake eat the Food
 - [X] Making the Snake grow longer
-- [ ] Checking for collision with edges and tail
+- [X] Checking for collision with edges and tail
 - [ ] Adding title and frame
 - [ ] Keeping score 
 - [ ] Adding sounds
