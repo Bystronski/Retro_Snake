@@ -77,7 +77,7 @@ class Game:
             # snake body collision with screen edges
             if (self.snake.body[0][0] == self.settings.number_of_cells or
                 self.snake.body[0][1] == self.settings.number_of_cells or
-                self.snake.body[0][0] == 0 or self.snake.body[0][1] == 0):
+                self.snake.body[0][0] == -1 or self.snake.body[0][1] == -1):
                 self.snake.new_game()
 
             # snake body collision with tail
