@@ -15,11 +15,19 @@ class Game:
         self.snake = Snake()
         self.screen = pygame.display.set_mode((self.settings.cell_size * self.settings.number_of_cells,
                                                self.settings.cell_size * self.settings.number_of_cells))
+        self.playground = pygame.Rect(60, 60, self.settings.cell_size * (self.settings.number_of_cells - 4),
+                                      self.settings.cell_size * (self.settings.number_of_cells - 4))
         pygame.display.set_caption("Retro Snake")
+
+        # title text formatting
+        self.title = pygame.font.SysFont("arial", 30)
+        self.title_surface = self.title.render("Retro Snake Game", True, (255, 168, 52))
+        self.title_rect = self.title_surface.get_rect()
+        self.title_rect.midleft = (self.settings.cell_size, self.settings.cell_size)
 
         # custom user event
         self.SNAKE_MOVE = pygame.USEREVENT
-        pygame.time.set_timer(self.SNAKE_MOVE, 200)
+        pygame.time.set_timer(self.SNAKE_MOVE, 100)
 
     def run_game(self):
         """Start main game loop."""
@@ -48,6 +56,12 @@ class Game:
             # changing surface color
             self.screen.fill(self.settings.background_color)
 
+            # draw play board color
+            pygame.draw.rect(self.screen,(150, 220, 110),self.playground)
+
+            # draw title on surface
+            self.screen.blit(self.title_surface, self.title_rect)
+
             # draw apple food
             self.apple.draw(self.settings, self.screen)
 
@@ -55,14 +69,14 @@ class Game:
             self.snake.draw(self.screen, self.settings)
 
             # draw horizontal lines
-            for cell in range(1, self.settings.number_of_cells):
-                pygame.draw.line(self.screen, pygame.Color('black'),Vector2(0, self.settings.cell_size * cell),
-                                 Vector2(self.settings.cell_size * self.settings.number_of_cells,self.settings.cell_size * cell), 2)
+            for cell in range(2, self.settings.number_of_cells - 1):
+                pygame.draw.line(self.screen, pygame.Color('black'),Vector2(60, self.settings.cell_size * cell),
+                                 Vector2(self.settings.cell_size * self.settings.number_of_cells - 2 * self.settings.cell_size,self.settings.cell_size * cell), 2)
 
             # draw vertical lines
-            for cell in range(1, self.settings.number_of_cells):
-                pygame.draw.line(self.screen, pygame.Color('black'), Vector2(self.settings.cell_size * cell, 0),
-                                 Vector2(self.settings.cell_size * cell, self.settings.cell_size * self.settings.number_of_cells), 2)
+            for cell in range(2, self.settings.number_of_cells - 1):
+                pygame.draw.line(self.screen, pygame.Color('black'), Vector2(self.settings.cell_size * cell, 60),
+                                 Vector2(self.settings.cell_size * cell, self.settings.cell_size * self.settings.number_of_cells - 2 * self.settings.cell_size), 2)
 
             # checking collision snake with apple
             if self.snake.body[0] == self.apple.position:
@@ -75,9 +89,9 @@ class Game:
                         self.apple.new_position = False
 
             # snake body collision with screen edges
-            if (self.snake.body[0][0] == self.settings.number_of_cells or
-                self.snake.body[0][1] == self.settings.number_of_cells or
-                self.snake.body[0][0] == -1 or self.snake.body[0][1] == -1):
+            if (self.snake.body[0][0] == self.settings.number_of_cells - 2 or
+                self.snake.body[0][1] == self.settings.number_of_cells - 2 or
+                self.snake.body[0][0] == 1 or self.snake.body[0][1] == 1):
                 self.snake.new_game()
 
             # snake body collision with tail

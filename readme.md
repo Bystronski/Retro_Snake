@@ -26,7 +26,7 @@ Project is created with:
 - [X] Making the Snake eat the Food
 - [X] Making the Snake grow longer
 - [X] Checking for collision with edges and tail
-- [ ] Adding title and frame
+- [X] Adding title and frame
 - [ ] Keeping score 
 - [ ] Adding sounds
 

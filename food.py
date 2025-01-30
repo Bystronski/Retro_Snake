@@ -15,6 +15,6 @@ class Food:
 
     def generate_random_position(self):
         """Generate a random position."""
-        x = random.randint(0,24)
-        y = random.randint(0,24)
+        x = random.randint(3,26)
+        y = random.randint(3,26)
         return Vector2(x,y)
