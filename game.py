@@ -67,6 +67,12 @@ class Game:
             # checking collision snake with apple
             if self.snake.body[0] == self.apple.position:
                 self.snake.eat = True
+                self.apple.new_position = True
+                # checking apple position is not in snake body
+                while self.apple.new_position:
+                    self.apple.position = self.apple.generate_random_position()
+                    if self.apple.position not in self.snake.body:
+                        self.apple.new_position = False
 
             # Display the last modified screen
             pygame.display.flip()

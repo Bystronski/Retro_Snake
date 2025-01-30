@@ -23,7 +23,7 @@ Project is created with:
 - [X] Creating the Food
 - [X] Creating the Snake
 - [X] Moving the Snake
-- [ ] Making the Snake eat the Food
+- [X] Making the Snake eat the Food
 - [X] Making the Snake grow longer
 - [ ] Checking for collision with edges and tail
 - [ ] Adding title and frame
